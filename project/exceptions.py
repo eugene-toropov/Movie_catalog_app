@@ -4,3 +4,8 @@ class BaseServiceError(Exception):
 
 class ItemNotFound(BaseServiceError):
     code = 404
+
+
+class UserAlreadyExists(BaseServiceError):
+    code = 400
+    message = 'Такой пользователь уже существует'
