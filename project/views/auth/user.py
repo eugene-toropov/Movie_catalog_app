@@ -30,6 +30,6 @@ class PasswordView(Resource):
     @auth_required
     def put(self, email=None):
         req_json = request.json
-        req_json['email'] = email
-        user_service.update_password(req_json)
+        new_password = req_json.get('new_password')
+        user_service.update_password(email, new_password)
         return '', 204

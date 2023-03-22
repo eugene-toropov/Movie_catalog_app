@@ -33,7 +33,7 @@ class UsersDAO:
         self.session.commit()
 
     def update(self, user_d):
-        user = self.get_one(user_d.get('id'))
+        user = self.get_one(user_d.get('email'))
         if user_d.get('email'):
             user.email = user_d.get('email')
         if user_d.get('password'):
