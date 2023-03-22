@@ -15,6 +15,7 @@ class UsersService:
         return users
 
     def update(self, user_d):
+        user_d['password'] = generate_password_hash(user_d['password'])
         return self.dao.update(user_d)
 
     def delete(self, pk):

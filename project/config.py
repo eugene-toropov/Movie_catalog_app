@@ -7,6 +7,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///./project.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = os.getenv('SECRET_KEY', 'you-will-never-guess')
+    JWT_ALGORITHM = "HS256"
     JSON_AS_ASCII = False
 
     ITEMS_PER_PAGE = 12

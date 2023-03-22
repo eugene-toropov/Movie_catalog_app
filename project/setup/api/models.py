@@ -31,8 +31,6 @@ user: Model = api.model('Пользователь', {
     'password': fields.String(required=True),
     'name': fields.String(),
     'surname': fields.String(),
-    'favourite_genre': fields.Integer(),
-    'genre': fields.Nested(genre),
 })
 
 auth: Model = api.model('Авторизация', {

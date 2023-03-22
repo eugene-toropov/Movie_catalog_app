@@ -3,7 +3,7 @@ import hashlib
 import hmac
 
 import jwt
-from flask import current_app
+from flask import current_app, request, abort
 
 
 def __generate_password_digest(password: str) -> bytes:
@@ -30,7 +30,27 @@ def compare_passwords(pas_hash, other_pas) -> bool:
 
 
 def get_email_from_token(data):
-    token = data['Autorization'].split('Bearer ')[-1]
+    token = data['Authorization'].split('Bearer ')[-1]
     data = jwt.decode(token, current_app.config['SECRET_KEY'], algorithms=current_app.config['JWT_ALGORITHM'])
     email = data['email']
     return email
+
+
+def auth_required(func):
+
+    def wrapper(*args, **kwargs):
+        if 'Authorization' not in request.headers:
+            return abort(401)
+
+        data = request.headers['Authorization']
+        token = data.split('Bearer ')[-1]
+
+        try:
+            result = jwt.decode(token, current_app.config['SECRET_KEY'], algorithms=current_app.config['JWT_ALGORITHM'])
+            email = result.get('email')
+        except Exception as e:
+            return abort(401)
+
+        return func(*args, **kwargs, email=email)
+
+    return wrapper
