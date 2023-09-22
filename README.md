@@ -1,49 +1,16 @@
 # Movie_catalog_app
 
-## Описание проекта
-- Установка зависимостей
-```shell
-pip install -r requirements.txt
+This is a Movie Catalog App that allows users to explore movies, directors, and genres. The backend is built with Flask-RESTx and provides functionalities like user registration, login, and authentication using JWT tokens. The frontend is developed with React and provides an intuitive user interface to interact with the movie catalog.
 
-pip install -r requirements.dev.txt
-```
+# Functionality
 
-- Создание моделей (очистит БД и создаст все модели, указанные в импорте)
-```shell
-python create_tables.py
-```
+The Movie Catalog App provides the following functionalities:
 
-- Загрузка данных в базу
-```shell
-python load_fixture.py
-```
-Скрпит читает файл fixtures.json и загружает данные в базу. Если данные уже загружены - выводит соответсвующее сообщение. 
-
-## Запуск проекта
-
-### Bash (Linux/MACOS)
-```shell
-export FLASK_APP=run.py
-export FLASK_ENV='development'
-flask run
-```
-
-### CMD (Windows)
-```shell
-set FLASK_APP=run.py
-set FLASK_ENV=development
-flask run
-```
-
-### PowerShell (Windows)
-```shell
-$env:FLASK_APP = "run"
-$env:FLASK_ENV = "development"
-flask run
-```
-
-## Запуск тестов
-```shell
-pytest .
-```
-
+- User Registration and Login:
+- Users can create an account and log in to access personalized features.
+- JWT Token Authentication: Authentication is handled using JWT tokens for secure access to protected routes.
+- User Profile: Users can view and edit their profile information, including name, surname, and favorite genre.
+- Change Password: Users can change their account password securely.
+- Movie Catalog: The app displays a list of movies starting with the latest releases.
+- Genres and Directors: Users can explore genres and directors available in the movie catalog.
+- Favorites: Users can add movies to their favorites list. (Note: Frontend functionality for favorites is still in progress.)
